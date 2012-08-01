@@ -2,7 +2,7 @@
  * @file  rtems/score/atomic_cpu.h
  * 
  * This include file implements the atomic operations for i386 and defines 
- * atomic date types which are used by the atomic operations API file. This
+ * atomic data types which are used by the atomic operations API file. This
  * file should use fixed name atomic_cpu.h and should be included in atomic
  * operations API file atomic.h. Most of the parts of implementations are 
  * imported from FreeBSD kernel.
@@ -44,6 +44,8 @@
 
 #ifndef _RTEMS_SCORE_ATOMIC_CPU_H
 #define _RTEMS_SCORE_ATOMIC_CPU_H
+
+#include <rtems/score/genericcpuatomic.h>
 
 #ifdef __cplusplus
 extern "C" {

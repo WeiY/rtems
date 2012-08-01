@@ -2,7 +2,7 @@
  * @file  rtems/score/atomic_cpu.h
  * 
  * This include file implements the atomic operations for powerpc and defines 
- * atomic date types which are used by the atomic operations API file. This
+ * atomic data types which are used by the atomic operations API file. This
  * file should use fixed name atomic_cpu.h and should be included in atomic
  * operations API file atomic.h 
  */
