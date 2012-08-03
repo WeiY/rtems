@@ -52,11 +52,6 @@ extern "C" {
 
 /**@{*/
 
-/**
- * @brief atomic operation unsigned integer the size of a pointer type
- */
-typedef uintptr_t Atomic_Pointer;
-
 #if defined(RTEMS_SMP)
 #define	MPLOCKED	"lock ; "
 #else
