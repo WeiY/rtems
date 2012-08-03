@@ -88,30 +88,30 @@ extern "C" {
      : "cc", "memory")                              \
      /* __CPU_Atomic_Fetch_add_long */
 
-#define	_ATOMIC_ADD(type)                           \
+#define	_ATOMIC_ADD(typename, type)                           \
   static __inline void                              \
-  _CPU_Atomic_Fetch_add_##type(volatile Atomic_##type *p, Atomic_##type v) {  \
+  _CPU_Atomic_Fetch_add_##typename(volatile Atomic_##type *p, Atomic_##type v) {  \
     Atomic_##type t;                                \
-    __CPU_Atomic_Fetch_add_##type(p, v, t);         \
+    __CPU_Atomic_Fetch_add_##typename(p, v, t);         \
   }                                                 \
                                                     \
   static __inline void                              \
-  _CPU_Atomic_Fetch_add_acq_##type(volatile Atomic_##type *p, Atomic_##type v) { \
+  _CPU_Atomic_Fetch_add_acq_##typename(volatile Atomic_##type *p, Atomic_##type v) { \
     Atomic_##type t;                                            \
-   __CPU_Atomic_Fetch_add_##type(p, v, t);                      \
+   __CPU_Atomic_Fetch_add_##typename(p, v, t);                      \
    __ATOMIC_BARRIER;                                            \
   }                                                             \
                                                                 \
   static __inline void                                          \
-  _CPU_Atomic_Fetch_add_rel_##type(volatile Atomic_##type *p, Atomic_##type v) { \
+  _CPU_Atomic_Fetch_add_rel_##typename(volatile Atomic_##type *p, Atomic_##type v) { \
     Atomic_##type t;                                            \
     __ATOMIC_BARRIER;                                           \
-    __CPU_Atomic_Fetch_add_##type(p, v, t);                     \
+    __CPU_Atomic_Fetch_add_##typename(p, v, t);                     \
   }                                                             \
   /* _ATOMIC_ADD */
 
-_ATOMIC_ADD(int)
-_ATOMIC_ADD(long)
+_ATOMIC_ADD(int, Int)
+_ATOMIC_ADD(long, Long)
 
 #define _CPU_Atomic_Fetch_add_32(p, v)  \
     _CPU_Atomic_Fetch_add_int((volatile Atomic_Int *)(p), (Atomic_Int)(v))
@@ -158,31 +158,31 @@ _ATOMIC_ADD(long)
   : "cc", "memory")                                             \
   /* _CPU_Atomic_Fetch_and_long */
 
-#define	_ATOMIC_AND(type)                                       \
+#define	_ATOMIC_AND(typename, type)                                       \
   static __inline void                                          \
-  _CPU_Atomic_Fetch_and_##type(volatile Atomic_##type *p, Atomic_##type v) {  \
+  _CPU_Atomic_Fetch_and_##typename(volatile Atomic_##type *p, Atomic_##type v) {  \
     Atomic_##type t;                                            \
-    __CPU_Atomic_Fetch_and_##type(p, v, t);                     \
+    __CPU_Atomic_Fetch_and_##typename(p, v, t);                     \
   }                                                             \
                                                                 \
   static __inline void                                          \
-  _CPU_Atomic_Fetch_and_acq_##type(volatile Atomic_##type *p, Atomic_##type v) {  \
+  _CPU_Atomic_Fetch_and_acq_##typename(volatile Atomic_##type *p, Atomic_##type v) {  \
     Atomic_##type t;                                            \
-    __CPU_Atomic_Fetch_and_##type(p, v, t);                     \
+    __CPU_Atomic_Fetch_and_##typename(p, v, t);                     \
     __ATOMIC_BARRIER;                                           \
   }                                                             \
                                                                 \
   static __inline void                                          \
-  _CPU_Atomic_Fetch_and_rel_##type(volatile Atomic_##type *p, Atomic_##type v) {  \
+  _CPU_Atomic_Fetch_and_rel_##typename(volatile Atomic_##type *p, Atomic_##type v) {  \
     Atomic_##type t;                                            \
     __ATOMIC_BARRIER;                                           \
-    __CPU_Atomic_Fetch_and_##type(p, v, t);                     \
+    __CPU_Atomic_Fetch_and_##typename(p, v, t);                     \
   }                                                             \
   /* _ATOMIC_AND */
 
 
-_ATOMIC_AND(int)
-_ATOMIC_AND(long)
+_ATOMIC_AND(int, Int)
+_ATOMIC_AND(long, Long)
 
 #define _CPU_Atomic_Fetch_and_32(p, v)  \
     _CPU_Atomic_Fetch_and_int((volatile Atomic_Int *)(p), (Atomic_Int)(v))
@@ -230,30 +230,30 @@ _ATOMIC_AND(long)
   : "cc", "memory")                                     \
   /* __CPU_Atomic_Fetch_or_long */
 
-#define	_ATOMIC_OR(type)                                \
+#define	_ATOMIC_OR(typename, type)                                \
   static __inline void                                  \
-  _CPU_Atomic_Fetch_or_##type(volatile Atomic_##type *p, Atomic_##type v) {  \
+  _CPU_Atomic_Fetch_or_##typename(volatile Atomic_##type *p, Atomic_##type v) {  \
     Atomic_##type t;                                    \
-    __CPU_Atomic_Fetch_or_##type(p, v, t);              \
+    __CPU_Atomic_Fetch_or_##typename(p, v, t);              \
   }                                                     \
                                                         \
   static __inline void                                  \
-  _CPU_Atomic_Fetch_or_acq_##type(volatile Atomic_##type *p, Atomic_##type v) { \
+  _CPU_Atomic_Fetch_or_acq_##typename(volatile Atomic_##type *p, Atomic_##type v) { \
     Atomic_##type t;                                    \
-    __CPU_Atomic_Fetch_or_##type(p, v, t);              \
+    __CPU_Atomic_Fetch_or_##typename(p, v, t);              \
     __ATOMIC_BARRIER;                                   \
   }                                                     \
                                                         \
   static __inline void                                  \
-  _CPU_Atomic_Fetch_or_rel_##type(volatile Atomic_##type *p, Atomic_##type v) {	\
+  _CPU_Atomic_Fetch_or_rel_##typename(volatile Atomic_##type *p, Atomic_##type v) {	\
     Atomic_##type t;                                    \
     __ATOMIC_BARRIER;                                   \
-    __CPU_Atomic_Fetch_or_##type(p, v, t);              \
+    __CPU_Atomic_Fetch_or_##typename(p, v, t);              \
   }                                                     \
   /* _ATOMIC_OR */
 
-_ATOMIC_OR(int)
-_ATOMIC_OR(long)
+_ATOMIC_OR(int, Int)
+_ATOMIC_OR(long, Long)
 
 #define _CPU_Atomic_Fetch_or_32(p, v)  \
     _CPU_Atomic_Fetch_or_int((volatile Atomic_Int *)(p), (Atomic_Int)(v))
@@ -300,31 +300,31 @@ _ATOMIC_OR(long)
   : "cc", "memory")                                     \
   /* __CPU_Atomic_Fetch_sub_long */
 
-#define	_ATOMIC_SUB(type)                               \
+#define	_ATOMIC_SUB(typename, type)                               \
   static __inline void                                  \
-  _CPU_Atomic_Fetch_sub_##type(volatile Atomic_##type *p, Atomic_##type v) { \
+  _CPU_Atomic_Fetch_sub_##typename(volatile Atomic_##type *p, Atomic_##type v) { \
     Atomic_##type t;                                    \
-    __CPU_Atomic_Fetch_sub_##type(p, v, t);             \
+    __CPU_Atomic_Fetch_sub_##typename(p, v, t);             \
   }                                                     \
                                                         \
   static __inline void                                  \
-  _CPU_Atomic_Fetch_sub_acq_##type(volatile Atomic_##type *p, Atomic_##type v) { \
+  _CPU_Atomic_Fetch_sub_acq_##typename(volatile Atomic_##type *p, Atomic_##type v) { \
     Atomic_##type t;                                    \
-    __CPU_Atomic_Fetch_sub_##type(p, v, t);             \
+    __CPU_Atomic_Fetch_sub_##typename(p, v, t);             \
     __ATOMIC_BARRIER;                                   \
   }                                                     \
                                                         \
   static __inline void                                  \
-  _CPU_Atomic_Fetch_sub_rel_##type(volatile Atomic_##type *p, Atomic_##type v) { \
+  _CPU_Atomic_Fetch_sub_rel_##typename(volatile Atomic_##type *p, Atomic_##type v) { \
     Atomic_##type t;                                    \
     __ATOMIC_BARRIER;                                   \
-    __CPU_Atomic_Fetch_sub_##type(p, v, t);             \
+    __CPU_Atomic_Fetch_sub_##typename(p, v, t);             \
   }                                                     \
   /* _ATOMIC_SUB */
 
 
-_ATOMIC_SUB(int)
-_ATOMIC_SUB(long)
+_ATOMIC_SUB(int, Int)
+_ATOMIC_SUB(long, Long)
 
 #define _CPU_Atomic_Fetch_sub_32(p, v)  \
     _CPU_Atomic_Fetch_sub_int((volatile Atomic_Int *)(p), (Atomic_Int)(v))
@@ -347,9 +347,9 @@ _ATOMIC_SUB(long)
 /*
  * We assume that a = b will do atomic loads and stores.
  */
-#define	ATOMIC_STORE_LOAD(TYPE)                                 \
+#define	ATOMIC_STORE_LOAD(TYPENAME, TYPE)                       \
 static __inline Atomic_##TYPE                                   \
-_CPU_Atomic_Load_##TYPE(volatile Atomic_##TYPE *p)              \
+_CPU_Atomic_Load_##TYPENAME(volatile Atomic_##TYPE *p)          \
 {                                                               \
   Atomic_##TYPE v;                                              \
                                                                 \
@@ -357,7 +357,7 @@ _CPU_Atomic_Load_##TYPE(volatile Atomic_##TYPE *p)              \
   return (v);                                                   \
 }                                                               \
 static __inline Atomic_##TYPE                                   \
-_CPU_Atomic_Load_acq_##TYPE(volatile Atomic_##TYPE *p)          \
+_CPU_Atomic_Load_acq_##TYPENAME(volatile Atomic_##TYPE *p)      \
 {                                                               \
   Atomic_##TYPE v;                                              \
                                                                 \
@@ -367,18 +367,18 @@ _CPU_Atomic_Load_acq_##TYPE(volatile Atomic_##TYPE *p)          \
 }                                                               \
                                                                 \
 static __inline void                                            \
-_CPU_Atomic_Store_##TYPE(volatile Atomic_##TYPE *p, Atomic_##TYPE v)  \
+_CPU_Atomic_Store_##TYPENAME(volatile Atomic_##TYPE *p, Atomic_##TYPE v)  \
 {                                                               \
   *p = v;                                                       \
 }                                                               \
 static __inline void                                            \
-_CPU_Atomic_Store_rel_##TYPE(volatile Atomic_##TYPE *p, Atomic_##TYPE v)  \
+_CPU_Atomic_Store_rel_##TYPENAME(volatile Atomic_##TYPE *p, Atomic_##TYPE v)  \
 {                                                               \
   __ATOMIC_BARRIER;                                             \
   *p = v;                                                       \
 }
 
-ATOMIC_STORE_LOAD(int)
+ATOMIC_STORE_LOAD(int, Int)
 
 #define _CPU_Atomic_Load_32(p)  \
     _CPU_Atomic_Load_int((volatile Atomic_Int *)(p))
