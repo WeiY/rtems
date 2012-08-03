@@ -1,20 +1,14 @@
 /**
- * @file  rtems/score/atomic_cpu.h
+ * @file  rtems/score/cpuatomic.h
  * 
  * This include file implements the atomic operations for i386 and defines 
  * atomic data types which are used by the atomic operations API file. This
- * file should use fixed name atomic_cpu.h and should be included in atomic
+ * file should use fixed name cpuatomic.h and should be included in atomic
  * operations API file atomic.h. Most of the parts of implementations are 
  * imported from FreeBSD kernel.
  */
 
 /*
- * COPYRIGHT (c) 2012 Deng Hengyi.
- *
- * The license and distribution terms for this file may be
- * found in the file LICENSE in this distribution or at
- * http://www.rtems.com/license/LICENSE.
- *-
  * Copyright (c) 1998 Doug Rabson
  * All rights reserved.
  *

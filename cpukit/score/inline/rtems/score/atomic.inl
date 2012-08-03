@@ -14,7 +14,7 @@
  *  The functions below are implemented with CPU dependent inline routines
  *  found in the path
  *
- *  rtems/cpukit/score/cpu/xxx/rtems/score/atomic_cpu.h
+ *  rtems/cpukit/score/cpu/xxx/rtems/score/cpuatomic.h
  *
  *  In the event that a CPU does not support a specific atomic function it has, the 
  *  CPU dependent routine does nothing (but does exist).
