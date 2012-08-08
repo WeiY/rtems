@@ -478,37 +478,37 @@ _CPU_Atomic_Compare_exchange_long(volatile Atomic_Long* p, Atomic_Long cmpval, A
 }
 
 static __inline int
-atomic_cmpset_acq_int(volatile Atomic_Int *p, Atomic_Int cmpval, Atomic_Int newval)
+_CPU_Atomic_Compare_exchange_acq_int(volatile Atomic_Int *p, Atomic_Int cmpval, Atomic_Int newval)
 {
   int retval;
 
-  retval = atomic_cmpset_int(p, cmpval, newval);
+  retval = _CPU_Atomic_Compare_exchange_int(p, cmpval, newval);
   __ATOMIC_BARRIER;
   return (retval);
 }
 
 static __inline int
-atomic_cmpset_rel_int(volatile Atomic_Int *p, Atomic_Int cmpval, Atomic_Int newval)
+_CPU_Atomic_Compare_exchange_rel_int(volatile Atomic_Int *p, Atomic_Int cmpval, Atomic_Int newval)
 {
   __ATOMIC_BARRIER;
-  return (atomic_cmpset_int(p, cmpval, newval));
+  return (_CPU_Atomic_Compare_exchange_int(p, cmpval, newval));
 }
 
 static __inline int
-atomic_cmpset_acq_long(volatile Atomic_Long *p, Atomic_Long cmpval, Atomic_Long newval)
+_CPU_Atomic_Compare_exchange_acq_long(volatile Atomic_Long *p, Atomic_Long cmpval, Atomic_Long newval)
 {
   Atomic_Long retval;
 
-  retval = atomic_cmpset_long(p, cmpval, newval);
+  retval = _CPU_Atomic_Compare_exchange_long(p, cmpval, newval);
   __ATOMIC_BARRIER;
   return (retval);
 }
 
 static __inline int
-atomic_cmpset_rel_long(volatile Atomic_Long *p, Atomic_Long cmpval, Atomic_Long newval)
+_CPU_Atomic_Compare_exchange_rel_long(volatile Atomic_Long *p, Atomic_Long cmpval, Atomic_Long newval)
 {
   __ATOMIC_BARRIER;
-  return (atomic_cmpset_long(p, cmpval, newval));
+  return (_CPU_Atomic_Compare_exchange_long(p, cmpval, newval));
 }
 
 #define _CPU_Atomic_Compare_exchange_32(dst, old, new)  \
