@@ -29,6 +29,7 @@ extern "C" {
 #if !defined(RTEMS_SMP)
 #include <rtems/score/genericatomicops.h>
 #else
+#include <stdatomic.h>
 #endif
 
 #ifdef __cplusplus
