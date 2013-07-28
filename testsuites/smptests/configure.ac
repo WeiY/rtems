@@ -52,6 +52,7 @@ smpatomic05/Makefile
 smpatomic06/Makefile
 smpatomic07/Makefile
 smplock01/Makefile
+smppflock/Makefile
 smpschedule01/Makefile
 smpunsupported01/Makefile
 ])

@@ -21,6 +21,7 @@ SUBDIRS += smpatomic07
 SUBDIRS += smplock01
 SUBDIRS += smpschedule01
 SUBDIRS += smpunsupported01
+SUBDIRS += smppflock
 endif
 
 include $(top_srcdir)/../automake/subdirs.am
